@@ -64,8 +64,6 @@ def main():
     for char in f.read():
         if char != "\n":
             apoe += char
-    
-    y = []
 
     for dna in list_of_dna:
         human_genome = ""
@@ -85,12 +83,20 @@ def main():
         print("Preprocessing data runtime: ", pre_process_end - pre_process_start)
         print("Algorithm runtime: ", algorithm_end - algorithm_start)
  
-    y = ['Contains', 'Does not']
-    list_of_d = ["1", "2", "3", "4", "5"]
-    plt.xlabel('Contains/Does not contain APOE4', fontsize=14)
-    plt.ylabel("Number of human DNA tested", fontsize=14)
-    plt.bar(list_of_d, y)
-    plt.show()
-    
+    #y = ['Contains', 'Does not']
+    #list_of_d = ["1", "2", "3", "4", "5"]
+    #plt.xlabel('Contains/Does not contain APOE4', fontsize=14)
+    #plt.ylabel("Number of human DNA tested", fontsize=14)
+    #plt.bar(list_of_d, y)
+    #plt.show()
+
+def test_main():
+    with open("sample.txt", 'r') as file:
+        human_genome = file.read().replace('\n', '')
+    keywords = ["AAA", "GAT"]
+    ac = AhoCorasick(keywords)
+    result = ac.search(human_genome)
+    print(result)
+
 if __name__ == "__main__":
-    main()
+    test_main()
